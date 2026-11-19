@@ -37,24 +37,74 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
 
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --font-heading: var(--font-poppins);
-  --font-instrument-sans: var(--font-instrument-sans);
-  /* --font-fira-sans: var(--font-fira-sans); */
-  --font-ubuntu: var(--font-ubuntu);
-  --font-public-sans: var(--font-public-sans);
+  /* System fonts only: nothing to download */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-poppins: var(--font-heading);
+  --font-instrument-sans: var(--font-heading);
+  --font-ubuntu: var(--font-sans);
+  --font-public-sans: var(--font-sans);
+
+  /* Palette: warm paper + forest green */
+  --color-teal-50: #f3f5f0;
+  --color-teal-100: #e6ebde;
+  --color-teal-200: #ccd6bd;
+  --color-teal-300: #aebd98;
+  --color-teal-400: #86996d;
+  --color-teal-500: #5f7549;
+  --color-teal-600: #3f5530;
+  --color-teal-700: #2f4224;
+  --color-teal-800: #22301b;
+  --color-teal-900: #182213;
+  --color-teal-950: #0e140b;
+
+  --color-yellow-50: #fbf7ee;
+  --color-yellow-100: #f6eedb;
+  --color-yellow-200: #eedfbd;
+  --color-yellow-300: #e8d9b8;
+  --color-yellow-400: #d9bf86;
+  --color-yellow-500: #c4a25c;
+  --color-yellow-600: #a0803f;
+
+  --color-neutral-50: #faf7f2;
+  --color-neutral-100: #f3eee6;
+  --color-neutral-200: #e7e0d4;
+  --color-neutral-300: #d4cbbb;
+  --color-neutral-400: #a99f8d;
+  --color-neutral-500: #81786a;
+  --color-neutral-600: #655d51;
+  --color-neutral-700: #4a443b;
+  --color-neutral-800: #302c26;
+  --color-neutral-900: #1f1c18;
+  --color-neutral-950: #12100d;
+
+  --color-gray-50: #faf7f2;
+  --color-gray-100: #f3eee6;
+  --color-gray-200: #e7e0d4;
+  --color-gray-300: #d4cbbb;
+  --color-gray-400: #a99f8d;
+  --color-gray-500: #81786a;
+  --color-gray-600: #655d51;
+  --color-gray-700: #4a443b;
+  --color-gray-800: #302c26;
+  --color-gray-900: #1f1c18;
+  --color-gray-950: #12100d;
+
+  --color-paper: #faf7f2;
+  --color-sand: #efe8dc;
+  --color-ink: #1f1c18;
+  --color-forest: #22301b;
 }
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: #faf7f2;
+  --foreground: #1f1c18;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #22301b;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -63,8 +113,8 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --border: #e7e0d4;
+  --input: #d9d0c0;
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -86,7 +136,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-neutral-50 text-foreground;
+    @apply bg-neutral-50 text-foreground font-sans;
   }
 }
 
@@ -112,7 +162,7 @@
 }
 
 ::selection {
-  background: rgb(193, 255, 193);
+  background: #d9e2c8;
 }
 
 /* tailwind styles */
@@ -256,3 +306,6 @@ textarea {
 button {
   @apply cursor-pointer;
 }
+/* small helpers used by the shared components */
+.eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.link-draw:hover { text-decoration: underline; text-underline-offset: 4px; }

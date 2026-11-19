@@ -10,10 +10,8 @@ type LazyProductRowProps = {
 export function LazyProductRow({ title, products, showActions = true }: LazyProductRowProps) {
   return (
     <div className="mb-12">
-      <h2 className="text-2xl font-semibold text-neutral-900 mb-6 font-instrument-sans">
-        {title}
-      </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <h2 className="mb-6 text-2xl font-semibold text-neutral-900">{title}</h2>
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {products.map((product) => (
           <ProductCard key={product.slug} product={product} showActions={showActions} />
         ))}

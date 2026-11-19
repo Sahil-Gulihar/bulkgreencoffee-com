@@ -4,7 +4,6 @@ import { Image } from "@/components/Image";
 import Link from "@/lib/next-link-compat";
 import { useRouter } from "@/lib/next-nav-compat";
 import { Check, Plus } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import type { Product } from "@/data/products";
 import { useCurrency } from "@/components/currency-provider";
 import { CURRENCIES } from "@/lib/currency";
@@ -16,6 +15,7 @@ type ProductCardProps = {
   showActions?: boolean;
 };
 
+/** Plain product card. The only motion is a slight photo zoom on hover (CSS transform, no JS). */
 export function ProductCard({ product, showPrice = true, showActions = true }: ProductCardProps) {
   const { currency, convert } = useCurrency();
   const config = CURRENCIES[currency];
@@ -23,76 +23,65 @@ export function ProductCard({ product, showPrice = true, showActions = true }: P
   const { toggle, add, isInCart } = useCart();
   const router = useRouter();
   const inCart = isInCart(product.slug);
+  const href = `/products/${product.slug}`;
 
   return (
-    <Card className="overflow-hidden rounded-lg bg-neutral-50 p-0 transition-all relative">
-      {/* Image area */}
-      <div className="aspect-square relative">
-        <Link href={`/products/${product.slug}`} className="block w-full h-full">
+    <article className="group overflow-hidden rounded-lg border border-neutral-200 bg-white">
+      <div className="relative aspect-square overflow-hidden bg-neutral-100">
+        <Link href={href} className="block h-full w-full" aria-label={product.name}>
           <Image
             src={product.image}
             alt={product.name}
             fill
-            priority
             draggable={false}
-            className="object-cover"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </Link>
 
-        {/* Absolute badges top-right */}
-        <div className="absolute top-2 right-2 flex flex-col gap-1 items-end z-10">
-          {/* Select Sample toggle button */}
-          {showActions && (
-            <button
-              type="button"
-              onClick={() => toggle(product.slug)}
-              className={`flex items-center gap-1 px-3 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
-                inCart
-                  ? "bg-teal-600 text-white hover:bg-teal-700"
-                  : "bg-white text-black hover:bg-teal-600 hover:text-white"
-              }`}
-            >
-              {inCart ? (
-                <>
-                  <Check className="w-3.5 h-3.5" /> Selected
-                </>
-              ) : (
-                <>
-                  <Plus className="w-3.5 h-3.5" /> Select
-                </>
-              )}
-            </button>
-          )}
-
+        <div className="absolute left-2 top-2 flex flex-col items-start gap-1">
           {product.scaScore != null && product.scaScore > 81 && (
-            <span className="bg-green-600 px-2 py-0.5 rounded text-xs font-medium text-white">
-              Specialty
-            </span>
+            <span className="rounded bg-teal-700 px-2 py-0.5 text-xs font-medium text-white">Specialty</span>
           )}
           {product.categoryTwo && (
-            <span className="bg-black/50 px-2 py-0.5 rounded text-xs font-medium text-white capitalize">
+            <span className="rounded bg-black/55 px-2 py-0.5 text-xs font-medium text-white capitalize">
               {product.categoryTwo}
             </span>
           )}
         </div>
+
+        {showActions && (
+          <button
+            type="button"
+            onClick={() => toggle(product.slug)}
+            aria-pressed={inCart}
+            className={`absolute right-2 top-2 flex items-center gap-1 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
+              inCart ? "bg-teal-700 text-white" : "bg-white text-neutral-900 hover:bg-teal-700 hover:text-white"
+            }`}
+          >
+            {inCart ? (
+              <>
+                <Check className="h-3.5 w-3.5" /> Selected
+              </>
+            ) : (
+              <>
+                <Plus className="h-3.5 w-3.5" /> Select
+              </>
+            )}
+          </button>
+        )}
       </div>
 
-      {/* Card body */}
-      <div className="px-3 pt-2 pb-3">
-        <Link href={`/products/${product.slug}`}>
-          <h3 className="text-md font-semibold text-black leading-tight hover:underline cursor-pointer">
-            {product.name}
-          </h3>
+      <div className="p-3">
+        <Link href={href}>
+          <h3 className="text-base font-semibold leading-tight text-neutral-900 hover:underline">{product.name}</h3>
         </Link>
 
         {showPrice && (
-          <div className="flex items-center justify-between text-xs text-muted-foreground mt-1">
+          <div className="mt-1 flex items-center justify-between text-xs text-neutral-600">
             <span dir="ltr">
               From {config.symbol}
-              {currency === "INR"
-                ? minPriceConverted
-                : minPriceConverted.toFixed(2)}
-              /{product.minimumOrder.unit}
+              {currency === "INR" ? minPriceConverted : minPriceConverted.toFixed(2)}
+              {product.minimumOrder.unit ? `/${product.minimumOrder.unit}` : ""}
             </span>
             <span>
               MOQ: {product.minimumOrder.quantity} {product.minimumOrder.unit}
@@ -100,28 +89,27 @@ export function ProductCard({ product, showPrice = true, showActions = true }: P
           </div>
         )}
 
-        {/* Action buttons */}
         {showActions && (
-          <div className="flex gap-2 mt-3">
+          <div className="mt-3 flex gap-2">
             <button
               type="button"
               onClick={() => {
                 add(product.slug);
                 router.push("/cart");
               }}
-              className="flex-1 h-8 rounded-lg text-xs font-medium bg-teal-600 text-white hover:bg-teal-700 transition-colors cursor-pointer"
+              className="h-9 flex-1 rounded-md bg-teal-800 text-xs font-medium text-white hover:bg-teal-700"
             >
               Add to Cart
             </button>
             <Link
               href={`/buy-green-coffee-beans/${product.slug}`}
-              className="flex-1 h-8 rounded-lg text-xs font-medium border border-gray-300 text-gray-700 hover:border-gray-500 hover:text-black flex items-center justify-center transition-colors"
+              className="flex h-9 flex-1 items-center justify-center rounded-md border border-neutral-300 text-xs font-medium text-neutral-800 hover:bg-neutral-100"
             >
               Buy Now
             </Link>
           </div>
         )}
       </div>
-    </Card>
+    </article>
   );
 }

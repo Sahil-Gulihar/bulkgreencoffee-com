@@ -3,19 +3,12 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse }
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import RootProviders from "@/components/providers";
-import { WhatsappWidget } from "@/components/whatsapp-widget";
 import { OrganizationSchema } from "@/components/seo";
 import { Analytics } from "@vercel/analytics/react";
 import type { ReactNode } from "react";
 import NotFound from "./routes/not-found";
 
 export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap",
-  },
   { rel: "icon", href: "/favicon.ico" },
   { rel: "icon", href: "/icon-light.svg", media: "(prefers-color-scheme: light)" },
   { rel: "icon", href: "/icon-dark.svg", media: "(prefers-color-scheme: dark)" },
@@ -29,7 +22,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Wholesale Indian green coffee for roasters, blenders, and importers. Specialty lots (Natural, Honey, Washed) and commercial AA/AAA grade from Koraput (Odisha) and Halflong (Assam). Peaberry available. Export-ready with full traceability.",
+        "Wholesale Indian green coffee for roasters, blenders, and importers. Specialty lots (Natural, Honey, Washed) and commercial AA/AAA grade from Koraput (Odisha) and Halflong (Assam). Peaberry available. Full traceability.",
     },
     { property: "og:title", content: "Bulk Green Coffee | Indian Specialty & Commercial Green Coffee" },
     {
@@ -45,7 +38,7 @@ export const meta: MetaFunction = () => {
     {
       name: "twitter:description",
       content:
-        "Specialty and commercial-grade Indian green coffee. AA/AAA from ₹800/kg. Peaberry available. Koraput, Assam, and South India origins. Export-ready.",
+        "Specialty and commercial-grade Indian green coffee. AA/AAA from ₹800/kg. Peaberry available. Koraput, Assam, and South India origins.",
     },
     { name: "twitter:image", content: "https://bulkgreencoffee.com/og.png" },
   ];
@@ -53,7 +46,7 @@ export const meta: MetaFunction = () => {
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="bg-white overflow-x-hidden">
+    <html lang="en" className="bg-[#faf7f2] overflow-x-clip">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -70,7 +63,7 @@ gtag('config', 'G-MRH06FRBDY');`,
           }}
         />
       </head>
-      <body className={cn("min-h-screen w-full overflow-x-hidden bg-background font-sans antialiased")}>
+      <body className={cn("min-h-screen w-full overflow-x-clip bg-background font-sans antialiased")}>
         <OrganizationSchema />
         <script
           type="application/ld+json"
@@ -86,7 +79,6 @@ gtag('config', 'G-MRH06FRBDY');`,
           }}
         />
         <RootProviders>{children}</RootProviders>
-        <WhatsappWidget />
         <Analytics />
         <ScrollRestoration />
         <Scripts />

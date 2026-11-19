@@ -1,12 +1,17 @@
 "use client";
 
-import { Image } from "@/components/Image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "@/lib/next-link-compat";
 import { Menu, ShoppingCart, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { CurrencySelector } from "@/components/currency-selector";
 import { useCart } from "@/context/cart-context";
+
+const NAV_LINKS: [string, string][] = [
+  ["Products", "/products"],
+  ["Buy Green Coffee Beans", "/buy-green-coffee-beans"],
+  ["Product Request", "/new-product-request"],
+  ["White Label", "/white-label"],
+];
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,68 +19,46 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-teal-800">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-4 lg:px-6">
-          {/* LEFT */}
-          <div className="flex items-center gap-2 md:gap-6 min-w-0">
-            <Link href="/" className="flex items-center gap-3 min-w-0">
-              <span className="text-sm sm:text-xl text-white font-semibold text-nowrap tracking-tight truncate">
+      <header className="sticky top-0 z-40 w-full border-b border-neutral-200 bg-neutral-50">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 lg:px-6">
+          <div className="flex min-w-0 items-center gap-8">
+            <Link href="/" className="flex min-w-0 items-center gap-2.5">
+              <img src="/logo.svg" alt="Gray Cup" width={32} height={31} className="h-8 w-auto shrink-0" />
+              <span className="truncate text-lg font-semibold tracking-tight text-teal-800 sm:text-xl">
                 Bulk Green Coffee
               </span>
             </Link>
-            <p className="opacity-20 hidden md:block">|</p>
-            <nav className="hidden md:flex text-neutral-100 gap-1 text-sm font-medium">
-              {[
-                ["Products", "/products"],
-                ["Buy Green Coffee Beans", "/buy-green-coffee-beans"],
-                ["Product Request", "/new-product-request"],
-                ["White Label", "/white-label"],
-              ].map(([label, href]) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="rounded-md px-2 py-2 hover:bg-teal-500"
-                >
+            <nav className="hidden items-center gap-6 text-sm font-medium text-neutral-700 lg:flex">
+              {NAV_LINKS.map(([label, href]) => (
+                <Link key={href} href={href} className="whitespace-nowrap hover:text-teal-800">
                   {label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          <div className="flex items-center gap-0.5 sm:gap-2 shrink-0">
+          <div className="flex shrink-0 items-center gap-2">
             <CurrencySelector />
-            <Link href="/cart" className="relative p-2 text-white hover:bg-teal-500 rounded-md transition-colors">
+            <Link
+              href="/cart"
+              className="relative rounded-md p-2 text-neutral-800 hover:bg-neutral-200"
+              aria-label="Cart"
+            >
               <ShoppingCart className="h-5 w-5" />
               {count > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-yellow-400 text-black text-[10px] font-bold rounded-full min-w-[16px] h-4 flex items-center justify-center px-0.5 leading-none">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-teal-700 px-0.5 text-[10px] font-bold leading-none text-white">
                   {count}
                 </span>
               )}
             </Link>
-            <a
-              id="store-link"
+            <Link
               href="/contact"
-              className="hidden lg:inline-block"
+              className="hidden rounded-md bg-teal-800 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 lg:inline-block"
             >
-              <Button variant="lightgraybg" size="sm">
-                Contact
-              </Button>
-            </a>
-            <a
-              id="store-link"
-              href="https://graycup.org/"
-              target="_blank"
-              rel="noopener"
-              className="hidden lg:inline-block"
-            >
-              <Button variant="lightgraybg" size="sm">
-                Visit Gray Cup
-              </Button>
-            </a>
-
-            {/* Hamburger - visible whenever anything is hidden */}
+              Contact
+            </Link>
             <button
-              className="lg:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-teal-500"
+              className="rounded-md p-2 hover:bg-neutral-200 lg:hidden"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
@@ -85,82 +68,50 @@ export function Navbar() {
         </div>
       </header>
 
-      {/* ================= SIDEBAR ================= */}
-      <div
-        className={`fixed inset-0 z-50 transition-opacity ${
-          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/40"
-          onClick={() => setMenuOpen(false)}
-        />
-
-        {/* Drawer */}
-        <aside
-          style={{ backgroundColor: "#115e59" }}
-          className={`absolute right-0 top-0 h-full w-72 max-w-[85vw] p-6 shadow-xl flex flex-col
-          transform transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
-          ${menuOpen ? "translate-x-0" : "translate-x-full"}
-        `}
-        >
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-white font-semibold tracking-tight">
-              Bulk Green Coffee
-            </span>
-            <button
-              className="rounded-md cursor-pointer p-2 text-white hover:bg-teal-500"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* All links */}
-          <nav className="flex flex-col text-neutral-100 gap-1 text-sm font-medium">
-            {[
-              ["Products", "/products"],
-              ["Buy Green Coffee Beans", "/buy-green-coffee-beans"],
-              ["Cart", "/cart"],
-              ["Product Request", "/new-product-request"],
-              ["White Label", "/white-label"],
-            ].map(([label, href]) => (
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setMenuOpen(false)} />
+          <aside className="absolute right-0 top-0 flex h-full w-72 max-w-[85vw] flex-col bg-neutral-50 p-6 shadow-xl">
+            <div className="mb-6 flex items-center justify-between">
+              <span className="font-semibold text-teal-800">Bulk Green Coffee</span>
+              <button className="rounded-md p-2 hover:bg-neutral-200" onClick={() => setMenuOpen(false)} aria-label="Close menu">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <nav className="flex flex-col gap-1 text-sm font-medium text-neutral-800">
+              {[...NAV_LINKS.slice(0, 2), ["Cart", "/cart"], ...NAV_LINKS.slice(2)].map(([label, href]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-md px-2 py-2.5 hover:bg-neutral-200"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+            <div className="mt-auto flex flex-col gap-2 pt-6">
               <Link
-                key={href}
-                href={href}
+                href="/contact"
                 onClick={() => setMenuOpen(false)}
-                className="rounded-md px-2 py-2 hover:bg-teal-500"
+                className="rounded-md bg-teal-800 px-4 py-2.5 text-center text-sm font-medium text-white"
               >
-                {label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Actions */}
-          <div className="mt-auto flex flex-col gap-2 pt-6">
-            <Link
-              href="/contact"
-              onClick={() => setMenuOpen(false)}
-            >
-              <Button variant="lightgraybg" size="sm" className="w-full">
                 Contact
-              </Button>
-            </Link>
-            <Link
-              href="https://graycup.org/"
-              target="_blank"
-              rel="noopener"
-              onClick={() => setMenuOpen(false)}
-            >
-              <Button variant="lightgraybg" size="sm" className="w-full">
+              </Link>
+              <Link
+                href="https://graycup.org/"
+                target="_blank"
+                rel="noopener"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-md border border-neutral-300 px-4 py-2.5 text-center text-sm font-medium text-neutral-800"
+              >
                 Visit Gray Cup
-              </Button>
-            </Link>
-          </div>
-        </aside>
-      </div>
+              </Link>
+            </div>
+          </aside>
+        </div>
+      )}
     </>
   );
 }

@@ -30,16 +30,16 @@ export default function FooterBelow() {
   ];
 
   return (
-    <footer className="bg-teal-600">
+    <footer className="bg-teal-900 text-neutral-100">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 pb-8">
 
         {/* Policy links */}
-        <div className="pt-6 flex flex-wrap gap-x-6 gap-y-2">
+        <div className="pt-8 flex flex-wrap gap-x-8 gap-y-2">
           {policyLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-white/80 hover:text-white hover:underline transition-colors"
+              className="text-sm text-white/80 hover:text-white hover:underline"
             >
               {link.label}
             </Link>
@@ -47,11 +47,24 @@ export default function FooterBelow() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-md text-white font-medium border-t border-white/20 mt-4">
-          <p>
-            © {new Date().getFullYear()} Gray Cup Enterprises Pvt. Ltd. All
-            rights reserved.
-          </p>
+        <div className="pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-white/80 border-t border-white/15 mt-6">
+          <div className="flex flex-col gap-1.5">
+            <p>
+              © {new Date().getFullYear()} Gray Cup Enterprises Pvt. Ltd. All
+              rights reserved.
+            </p>
+            <a
+              href="https://graycup.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-2 text-white/80 hover:text-white"
+            >
+              <img src="/icon-dark.svg" alt="" width={20} height={19} className="h-5 w-auto" />
+              <span>
+                Maintained by <span className="underline underline-offset-4">graycup.com</span>
+              </span>
+            </a>
+          </div>
 
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-md">
             {resourceLinks.map((link) => (
@@ -64,7 +77,7 @@ export default function FooterBelow() {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className="hover:underline transition-colors"
+                className="link-draw hover:text-white transition-colors"
               >
                 {link.label}
               </Link>

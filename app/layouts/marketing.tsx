@@ -7,9 +7,7 @@ import FooterBelow from "@/components/footer-below";
 export default function MarketingLayout() {
   return (
     <div className="relative flex min-h-screen flex-col">
-      <div className="sticky top-0 z-50">
-        <Navbar />
-      </div>
+      <Navbar />
       <main className="w-full">
         <div className="max-w-7xl mx-auto">
           <Outlet />
