@@ -48,10 +48,23 @@ export default function FooterBelow() {
 
         {/* Bottom bar */}
         <div className="pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-white/80 border-t border-white/15 mt-6">
-          <p>
-            © {new Date().getFullYear()} Gray Cup Enterprises Pvt. Ltd. All
-            rights reserved.
-          </p>
+          <div className="flex flex-col gap-1.5">
+            <p>
+              © {new Date().getFullYear()} Gray Cup Enterprises Pvt. Ltd. All
+              rights reserved.
+            </p>
+            <a
+              href="https://graycup.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-2 text-white/80 hover:text-white"
+            >
+              <img src="/icon-dark.svg" alt="" width={20} height={19} className="h-5 w-auto" />
+              <span>
+                Maintained by <span className="underline underline-offset-4">graycup.com</span>
+              </span>
+            </a>
+          </div>
 
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-md">
             {resourceLinks.map((link) => (

@@ -22,8 +22,11 @@ export function Navbar() {
       <header className="sticky top-0 z-40 w-full border-b border-neutral-200 bg-neutral-50">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 lg:px-6">
           <div className="flex min-w-0 items-center gap-8">
-            <Link href="/" className="truncate text-lg font-semibold tracking-tight text-teal-800 sm:text-xl">
-              Bulk Green Coffee
+            <Link href="/" className="flex min-w-0 items-center gap-2.5">
+              <img src="/logo.svg" alt="Gray Cup" width={32} height={31} className="h-8 w-auto shrink-0" />
+              <span className="truncate text-lg font-semibold tracking-tight text-teal-800 sm:text-xl">
+                Bulk Green Coffee
+              </span>
             </Link>
             <nav className="hidden items-center gap-6 text-sm font-medium text-neutral-700 lg:flex">
               {NAV_LINKS.map(([label, href]) => (
