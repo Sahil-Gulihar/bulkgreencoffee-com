@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { pageMeta } from "@/lib/seo";
 import { getProductsByRegion, getCommercialProducts } from "@/data/products";
@@ -18,6 +19,23 @@ const northEastIndiaProducts = getProductsByRegion("North East India");
 const southIndiaProducts = getProductsByRegion("South India");
 const commercialProducts = getCommercialProducts();
 
+/** Headline split into masked words that slide up one after another. */
+function Words({ text, start, step = 70, className }: { text: string; start: number; step?: number; className?: string }) {
+  return (
+    <>
+      {text.split(" ").map((w, i) => (
+        <Fragment key={i}>
+          <span className="word-mask">
+            <span className={`word-in ${className ?? ""}`} style={{ ["--d" as string]: `${start + i * step}ms` }}>
+              {w}
+            </span>
+          </span>{" "}
+        </Fragment>
+      ))}
+    </>
+  );
+}
+
 export default function Home() {
   return (
     <div>
@@ -26,31 +44,31 @@ export default function Home() {
         <img
           src="/products/koraput-odisha/koraput-misty-forest-path-sunrays.webp"
           alt="Misty shade-grown coffee forest path in Koraput, Odisha"
-          className="absolute inset-0 h-full w-full object-cover hero-kenburns"
+          className="absolute inset-0 h-full w-full object-cover hero-img-in"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-950/85 via-teal-950/45 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-teal-950/70 via-transparent to-teal-950/30" />
+        <div className="anim-fade absolute inset-0 bg-gradient-to-r from-teal-950/85 via-teal-950/45 to-transparent" style={{ ["--d" as string]: "600ms" }} />
+        <div className="anim-fade absolute inset-0 bg-gradient-to-t from-teal-950/70 via-transparent to-teal-950/30" style={{ ["--d" as string]: "600ms" }} />
 
         <div className="on-dark relative z-10 mx-auto w-full max-w-[1480px] px-4 lg:px-8 pt-44 pb-14 lg:pb-20">
-          <p className="eyebrow anim-rise text-teal-200 mb-6" style={{ ["--d" as string]: "500ms" }}>
+          <p className="eyebrow anim-soft text-teal-200 mb-6" style={{ ["--d" as string]: "1500ms" }}>
             Indian Green Coffee · Wholesale &amp; Export
           </p>
-          <h1
-            className="anim-rise max-w-4xl text-[2.9rem] sm:text-6xl xl:text-[5.6rem] leading-[1.02] text-neutral-50 text-balance"
-            style={{ ["--d" as string]: "650ms" }}
-          >
-            Specialty and Commercial Indian Green Coffee: <em className="text-teal-200">Wholesale &amp; Export.</em>
+          <h1 className="max-w-4xl text-[2.9rem] sm:text-6xl xl:text-[5.6rem] leading-[1.02] text-neutral-50 text-balance">
+            <Words text="Specialty and Commercial Indian Green Coffee:" start={1800} />
+            <em className="text-teal-200">
+              <Words text="Wholesale & Export." start={1800 + 6 * 70} />
+            </em>
           </h1>
           <div className="mt-9 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p
-                className="anim-rise max-w-xl text-[1.02rem] leading-relaxed text-neutral-100/85"
-                style={{ ["--d" as string]: "850ms" }}
+                className="anim-soft max-w-xl text-[1.02rem] leading-relaxed text-neutral-100/85"
+                style={{ ["--d" as string]: "3000ms" }}
               >
                 From AAA/AA commercial grade beans at ₹800/kg to award-worthy specialty lots, we source directly from Koraput, Assam, and South India. Whether you run a roastery, a café chain, or import at scale, we have the right grade for your volume.
               </p>
-              <div className="anim-rise mt-8 flex flex-wrap gap-3" style={{ ["--d" as string]: "1000ms" }}>
+              <div className="anim-soft mt-8 flex flex-wrap gap-3" style={{ ["--d" as string]: "3250ms" }}>
                 <RequestCallDialog />
                 <Link href="https://cal.com/arjunaditya/30min?user=arjunaditya" target="_blank">
                   <Button variant="red" size="sm">
@@ -64,7 +82,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="anim-rise hidden lg:flex items-end gap-5 mr-20" style={{ ["--d" as string]: "1150ms" }}>
+            <div className="anim-soft hidden lg:flex items-end gap-5 mr-20" style={{ ["--d" as string]: "3500ms" }}>
               <div className="text-right">
                 <p className="eyebrow text-neutral-100/80">Koraput · Odisha</p>
                 <p className="eyebrow text-neutral-100/80 mt-1">900–1,350 masl</p>
