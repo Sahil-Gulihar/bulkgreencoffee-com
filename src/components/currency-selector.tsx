@@ -26,7 +26,7 @@ export function CurrencySelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="lightgraybg" size="sm" className="focus-visible:ring-0 focus-visible:outline-none data-[state=open]:ring-0 px-2 sm:px-3 sm:min-w-[90px]">
+        <Button variant="lightgraybg" size="sm" className="focus-visible:ring-0 focus-visible:outline-none data-[state=open]:ring-0 px-2 sm:px-3 sm:min-w-[90px] in-[.on-dark]:text-neutral-50 in-[.on-dark]:border-white/55 in-[.on-dark]:hover:text-teal-900 in-[.on-dark]:[--sweep:#faf7f2]">
           <span>{currentOption?.flag}</span>
           <span className="hidden sm:inline">{currentOption?.label ?? "USD ($)"}</span>
         </Button>

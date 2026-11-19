@@ -31,7 +31,8 @@ type TurnstileProps = {
   className?: string;
 };
 
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
+const TURNSTILE_SITE_KEY =
+  (typeof process !== "undefined" ? process.env?.NEXT_PUBLIC_TURNSTILE_SITE_KEY : "") || "";
 
 export function Turnstile({
   onVerify,

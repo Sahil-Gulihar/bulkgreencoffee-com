@@ -21,37 +21,71 @@ const commercialProducts = getCommercialProducts();
 export default function Home() {
   return (
     <div>
-      <div className="mx-auto px-4 lg:px-6 h-auto my-10">
-        <div className="md:min-h-screen pt-10 pb-20 max-w-6xl mx-auto md:pb-0 flex flex-col justify-center">
+      {/* ============ HERO (full-bleed, sits under the navbar) ============ */}
+      <section className="relative min-h-[100svh] overflow-hidden bg-teal-950 text-neutral-50 flex items-end">
+        <img
+          src="/products/koraput-odisha/koraput-misty-forest-path-sunrays.webp"
+          alt="Misty shade-grown coffee forest path in Koraput, Odisha"
+          className="absolute inset-0 h-full w-full object-cover hero-kenburns"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-950/85 via-teal-950/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-teal-950/70 via-transparent to-teal-950/30" />
+
+        <div className="on-dark relative z-10 mx-auto w-full max-w-[1480px] px-4 lg:px-8 pt-44 pb-14 lg:pb-20">
+          <p className="eyebrow anim-rise text-teal-200 mb-6" style={{ ["--d" as string]: "500ms" }}>
+            Indian Green Coffee · Wholesale &amp; Export
+          </p>
+          <h1
+            className="anim-rise max-w-4xl text-[2.9rem] sm:text-6xl xl:text-[5.6rem] leading-[1.02] text-neutral-50 text-balance"
+            style={{ ["--d" as string]: "650ms" }}
+          >
+            Specialty and Commercial Indian Green Coffee: <em className="text-teal-200">Wholesale &amp; Export.</em>
+          </h1>
+          <div className="mt-9 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p
+                className="anim-rise max-w-xl text-[1.02rem] leading-relaxed text-neutral-100/85"
+                style={{ ["--d" as string]: "850ms" }}
+              >
+                From AAA/AA commercial grade beans at ₹800/kg to award-worthy specialty lots, we source directly from Koraput, Assam, and South India. Whether you run a roastery, a café chain, or import at scale, we have the right grade for your volume.
+              </p>
+              <div className="anim-rise mt-8 flex flex-wrap gap-3" style={{ ["--d" as string]: "1000ms" }}>
+                <RequestCallDialog />
+                <Link href="https://cal.com/arjunaditya/30min?user=arjunaditya" target="_blank">
+                  <Button variant="red" size="sm">
+                    Schedule a Zoom Meeting
+                  </Button>
+                </Link>
+                <Link href="/products">
+                  <Button variant="teal" size="sm" className="!bg-neutral-50 !text-teal-900 !border-neutral-50 hover:!text-neutral-50 [--sweep:#22301b]">
+                    Buy Products
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            <div className="anim-rise hidden lg:flex items-end gap-5 mr-20" style={{ ["--d" as string]: "1150ms" }}>
+              <div className="text-right">
+                <p className="eyebrow text-neutral-100/80">Koraput · Odisha</p>
+                <p className="eyebrow text-neutral-100/80 mt-1">900–1,350 masl</p>
+              </div>
+              <img
+                src="/products/koraput-odisha/koraput-ripe-cherries-closeup.webp"
+                alt="Ripe coffee cherries"
+                className="h-40 w-32 object-cover border-[5px] border-paper/90 shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto px-4 lg:px-8 h-auto mt-20 mb-10">
+        <div className="max-w-[1400px] mx-auto">
           <div>
             <div>
-              <div>
-                <h1 className="text-4xl font-semibold text-black pt-2 max-w-xl">
-                  Specialty and Commercial Indian Green Coffee: Wholesale & Export.
-                </h1>
-                <p className="text-lg text-neutral-700 mt-4 max-w-2xl">
-                  From AAA/AA commercial grade beans at ₹800/kg to award-worthy specialty lots, we source directly from Koraput, Assam, and South India. Whether you run a roastery, a café chain, or import at scale, we have the right grade for your volume.
-                </p>
-                <div className="pt-5 flex flex-wrap gap-3 sm:gap-4">
-                  <RequestCallDialog />
-                  <Link
-                    href="https://cal.com/arjunaditya/30min?user=arjunaditya"
-                    target="_blank"
-                  >
-                    <Button variant="red" size="sm">
-                      Schedule a Zoom Meeting
-                    </Button>
-                  </Link>
-                  <Link href="/products">
-                    <Button variant="teal" size="sm">
-                      Buy Products
-                    </Button>
-                  </Link>
-                </div>
-              </div>
               {/* Featured Products Section */}
-              <div className="py-20 bg-white">
-                <div className="max-w-6xl mx-auto px-4 lg:px-6">
+              <div className="pt-4 pb-24">
+                <div className="max-w-[1400px] mx-auto px-0 lg:px-2">
                   <LazyProductRow
                     title="Commercial Grade"
                     products={commercialProducts}
@@ -76,37 +110,37 @@ export default function Home() {
               </div>
 
               {/* Why Indian Green Coffee */}
-              <section className="py-20 border-t border-neutral-100">
-                <div className="max-w-6xl mx-auto px-4 lg:px-6">
-                  <h2 className="text-3xl font-semibold text-black mb-4">
+              <section className="py-24 border-t border-neutral-300/60">
+                <div className="max-w-[1400px] mx-auto px-0 lg:px-2">
+                  <h2 className="font-heading text-4xl md:text-6xl text-neutral-900 leading-[1.05] mb-4">
                     Why Indian Green Coffee?
                   </h2>
                   <p className="text-neutral-600 max-w-3xl mb-10 text-lg">
                     India is the world's sixth-largest coffee producer and one of its best-kept secrets. Unlike most major origins, Indian coffee is almost entirely shade-grown, under silver oak, pepper vines, and cardamom, which slows cherry development, deepens flavour complexity, and keeps farming sustainable. The country produces both Arabica and Robusta across dramatically different terroirs: from the misty tribal highlands of Odisha and Assam to the established estates of Karnataka and Kerala.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="p-6 rounded-xl border border-neutral-200">
-                      <p className="font-semibold text-black mb-2">Shade-Grown by Default</p>
+                    <div className="group p-7 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-teal-700/60 hover:shadow-[0_30px_50px_-30px_rgba(34,48,27,0.35)]">
+                      <p className="font-heading text-2xl text-neutral-900 mb-3">Shade-Grown by Default</p>
                       <p className="text-sm text-neutral-600">Nearly all Indian coffee grows under a multi-canopy shade system, silver oak, jungle trees, pepper, and cardamom, producing slower-ripened cherries with more concentrated sugars and nuanced cup profiles.</p>
                     </div>
-                    <div className="p-6 rounded-xl border border-neutral-200">
-                      <p className="font-semibold text-black mb-2">Genuine Traceability</p>
+                    <div className="group p-7 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-teal-700/60 hover:shadow-[0_30px_50px_-30px_rgba(34,48,27,0.35)]">
+                      <p className="font-heading text-2xl text-neutral-900 mb-3">Genuine Traceability</p>
                       <p className="text-sm text-neutral-600">We source directly from tribal cooperatives in Koraput, small-holder farms in Assam, and established estates in Karnataka. Every lot comes with origin documentation, not just a country label.</p>
                     </div>
-                    <div className="p-6 rounded-xl border border-neutral-200">
-                      <p className="font-semibold text-black mb-2">Export-Ready Infrastructure</p>
+                    <div className="group p-7 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-teal-700/60 hover:shadow-[0_30px_50px_-30px_rgba(34,48,27,0.35)]">
+                      <p className="font-heading text-2xl text-neutral-900 mb-3">Export-Ready Infrastructure</p>
                       <p className="text-sm text-neutral-600">India exports coffee to over 80 countries. We handle phytosanitary certificates, GrainPro packaging, moisture control, and FOB documentation, reducing friction for international buyers.</p>
                     </div>
-                    <div className="p-6 rounded-xl border border-neutral-200">
-                      <p className="font-semibold text-black mb-2">Multiple Process Types</p>
+                    <div className="group p-7 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-teal-700/60 hover:shadow-[0_30px_50px_-30px_rgba(34,48,27,0.35)]">
+                      <p className="font-heading text-2xl text-neutral-900 mb-3">Multiple Process Types</p>
                       <p className="text-sm text-neutral-600">Natural, Washed, Honey Sun-Dried, and Monsooned: Indian farms offer more processing variety than most single-country origins, letting roasters build diverse menus from one supplier.</p>
                     </div>
-                    <div className="p-6 rounded-xl border border-neutral-200">
-                      <p className="font-semibold text-black mb-2">Competitive Pricing</p>
+                    <div className="group p-7 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-teal-700/60 hover:shadow-[0_30px_50px_-30px_rgba(34,48,27,0.35)]">
+                      <p className="font-heading text-2xl text-neutral-900 mb-3">Competitive Pricing</p>
                       <p className="text-sm text-neutral-600">Commercial AA/AAA grade from ₹800/kg. Specialty lots from ₹1,100/kg. Peaberry PB grade available. India offers exceptional quality-to-cost ratio compared to Ethiopian or Colombian equivalents.</p>
                     </div>
-                    <div className="p-6 rounded-xl border border-neutral-200">
-                      <p className="font-semibold text-black mb-2">Low MOQ for Sampling</p>
+                    <div className="group p-7 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-teal-700/60 hover:shadow-[0_30px_50px_-30px_rgba(34,48,27,0.35)]">
+                      <p className="font-heading text-2xl text-neutral-900 mb-3">Low MOQ for Sampling</p>
                       <p className="text-sm text-neutral-600">Minimum orders from 10 kg let roasters trial new origins without committing to containers. We provide sample packs on request before any bulk commitment.</p>
                     </div>
                   </div>
@@ -114,12 +148,12 @@ export default function Home() {
               </section>
 
               {/* What is Arabica */}
-              <section className="py-20 border-t border-neutral-100">
-                <div className="max-w-6xl mx-auto px-4 lg:px-6">
+              <section className="py-24 border-t border-neutral-300/60">
+                <div className="max-w-[1400px] mx-auto px-0 lg:px-2">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-teal-700 mb-3">Coffee Education</p>
-                      <h2 className="text-3xl font-semibold text-black mb-4">What is Arabica Coffee?</h2>
+                      <p className="eyebrow text-teal-700 mb-3">Coffee Education</p>
+                      <h2 className="font-heading text-4xl md:text-6xl text-neutral-900 leading-[1.05] mb-4">What is Arabica Coffee?</h2>
                       <p className="text-neutral-600 mb-4">
                         <em>Coffea arabica</em> is the most widely grown coffee species in the world, accounting for roughly 60–70% of global production. Arabica thrives at high altitudes, typically 800m to 2,000m above sea level, where cooler temperatures slow the growth of the coffee cherry, allowing sugars and acids to develop over a longer period.
                       </p>
@@ -131,7 +165,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-teal-700 mb-3">Arabica Varieties in India</p>
+                      <p className="eyebrow text-teal-700 mb-3">Arabica Varieties in India</p>
                       <div className="space-y-4">
                         {[
                           { name: "S.795", desc: "India's most widely planted Arabica variety, bred from Kent and S.288. Known for balanced acidity, good body, and subtle mocha notes. Highly disease-resistant." },
@@ -155,12 +189,12 @@ export default function Home() {
               </section>
 
               {/* What is Peaberry */}
-              <section className="py-20 border-t border-neutral-100 bg-neutral-50">
-                <div className="max-w-6xl mx-auto px-4 lg:px-6">
+              <section className="py-24 border-t border-neutral-300/60 bg-neutral-50">
+                <div className="max-w-[1400px] mx-auto px-0 lg:px-2">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-teal-700 mb-3">Specialty Grade</p>
-                      <h2 className="text-3xl font-semibold text-black mb-4">What is Indian Peaberry Coffee?</h2>
+                      <p className="eyebrow text-teal-700 mb-3">Specialty Grade</p>
+                      <h2 className="font-heading text-4xl md:text-6xl text-neutral-900 leading-[1.05] mb-4">What is Indian Peaberry Coffee?</h2>
                       <p className="text-neutral-600 mb-4">
                         A peaberry (PB) is a natural mutation in a coffee cherry where only one seed develops instead of the usual two flat-sided beans. Without a partner seed to grow against, the single seed grows round and dense, like a small pea, hence the name. This mutation occurs in approximately 5% of all coffee cherries harvested.
                       </p>
@@ -172,12 +206,12 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="space-y-5">
-                      <div className="p-5 rounded-xl border border-neutral-200 bg-white">
-                        <p className="font-semibold text-black mb-1">Why Peaberry Roasts Better</p>
+                      <div className="group p-6 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-teal-700/60">
+                        <p className="font-heading text-2xl text-neutral-900 mb-1">Why Peaberry Roasts Better</p>
                         <p className="text-sm text-neutral-600">The uniform spherical shape means the bean rotates freely in the drum and receives even heat exposure across its entire surface, eliminating the flat-side vs curved-side differential that causes uneven development in standard beans.</p>
                       </div>
-                      <div className="p-5 rounded-xl border border-neutral-200 bg-white">
-                        <p className="font-semibold text-black mb-1">Indian Coffee Grading: PB vs AA vs AAA</p>
+                      <div className="group p-6 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-teal-700/60">
+                        <p className="font-heading text-2xl text-neutral-900 mb-1">Indian Coffee Grading: PB vs AA vs AAA</p>
                         <p className="text-sm text-neutral-600">
                           <strong>PB (Peaberry)</strong>: round single-seed beans, hand-sorted, premium grade.<br />
                           <strong>AAA</strong>: largest screen-size flat beans, top commercial grade.<br />
@@ -185,12 +219,12 @@ export default function Home() {
                           <strong>A / AB</strong>: smaller screen sizes, excellent for blending and high-volume use.
                         </p>
                       </div>
-                      <div className="p-5 rounded-xl border border-neutral-200 bg-white">
-                        <p className="font-semibold text-black mb-1">Where to Find Indian Peaberry</p>
+                      <div className="group p-6 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-teal-700/60">
+                        <p className="font-heading text-2xl text-neutral-900 mb-1">Where to Find Indian Peaberry</p>
                         <p className="text-sm text-neutral-600">We stock Peaberry (PB) grade from Koraput Washed, Chikmagalur Arabica, Coorg Arabica, and Wayanad Arabica. All peaberry lots are hand-sorted at origin and packed in GrainPro-lined jute bags to preserve moisture stability during transit.</p>
                       </div>
-                      <div className="p-5 rounded-xl border border-neutral-200 bg-white">
-                        <p className="font-semibold text-black mb-1">MOQ for Peaberry</p>
+                      <div className="group p-6 border border-neutral-300/70 bg-card transition-all duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-teal-700/60">
+                        <p className="font-heading text-2xl text-neutral-900 mb-1">MOQ for Peaberry</p>
                         <p className="text-sm text-neutral-600">Peaberry lots are available from 10 kg for sampling. Bulk orders in 30 kg or 60 kg GrainPro jute bags. Contact us for current availability: PB lots sell out faster than standard grades.</p>
                       </div>
                     </div>
@@ -199,15 +233,15 @@ export default function Home() {
               </section>
 
               {/* Indian Coffee Regions */}
-              <section className="py-20 border-t border-neutral-100">
-                <div className="max-w-6xl mx-auto px-4 lg:px-6">
-                  <h2 className="text-3xl font-semibold text-black mb-4">Indian Coffee Growing Regions</h2>
+              <section className="py-24 border-t border-neutral-300/60">
+                <div className="max-w-[1400px] mx-auto px-0 lg:px-2">
+                  <h2 className="font-heading text-4xl md:text-6xl text-neutral-900 leading-[1.05] mb-4">Indian Coffee Growing Regions</h2>
                   <p className="text-neutral-600 max-w-3xl mb-10">
                     India's coffee geography spans three distinct belts: the tribal highlands of East India, the underexplored frontier of North East India, and the established estates of South India. Each belt produces coffees with radically different character.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
-                      <p className="font-semibold text-black mb-1">East India</p>
+                      <p className="font-heading text-2xl text-neutral-900 mb-1">East India</p>
                       <p className="text-xs font-medium text-teal-700 mb-3">Koraput (Odisha) · Araku Valley (Andhra Pradesh)</p>
                       <p className="text-sm text-neutral-600 mb-3">
                         Koraput is Odisha's southernmost district and one of India's most exciting emerging specialty origins. At 900–1,350 masl, tribal farming communities cultivate Arabica in the Eastern Ghats under natural forest canopy. The Odisha government branded Koraput Coffee in 2019 and the region is currently seeking a GI tag.
@@ -217,7 +251,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div>
-                      <p className="font-semibold text-black mb-1">North East India</p>
+                      <p className="font-heading text-2xl text-neutral-900 mb-1">North East India</p>
                       <p className="text-xs font-medium text-teal-700 mb-3">Halflong (Assam) · Tirap & Chirang (Arunachal Pradesh)</p>
                       <p className="text-sm text-neutral-600 mb-3">
                         India's most underexplored coffee region. Halflong in Dima Hasao district of Assam produces high-altitude Arabica (SL-9) at 950–1,000 masl with delicate florals and red-berry sweetness, consistently scoring above 88 SCA at specialty cuppings. Chirang and Tirap produce CxR Robusta from forest-fringe tribal farms.
@@ -227,7 +261,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div>
-                      <p className="font-semibold text-black mb-1">South India</p>
+                      <p className="font-heading text-2xl text-neutral-900 mb-1">South India</p>
                       <p className="text-xs font-medium text-teal-700 mb-3">Chikmagalur · Coorg · Wayanad · Bababudangiri</p>
                       <p className="text-sm text-neutral-600 mb-3">
                         The established heartland of Indian coffee production. Karnataka alone accounts for over 70% of India's total coffee output. Chikmagalur (the cradle of Indian coffee), Coorg (famous for full-bodied planters' estate Arabica), Wayanad (smooth Kerala forest-grown), and Bababudangiri (India's mythical origin) all offer consistent, traceable green coffee year-round.
@@ -241,9 +275,9 @@ export default function Home() {
               </section>
 
               {/* FAQ */}
-              <section className="py-20 border-t border-neutral-100 bg-neutral-50">
+              <section className="py-24 border-t border-neutral-300/60 bg-neutral-50">
                 <div className="max-w-4xl mx-auto px-4 lg:px-6">
-                  <h2 className="text-3xl font-semibold text-black mb-10">Frequently Asked Questions</h2>
+                  <h2 className="font-heading text-4xl md:text-6xl text-neutral-900 leading-[1.05] mb-10">Frequently Asked Questions</h2>
                   <div className="space-y-6">
                     {[
                       {
@@ -276,7 +310,7 @@ export default function Home() {
                       },
                     ].map((item, i) => (
                       <div key={i} className="border-b border-neutral-200 pb-6">
-                        <p className="font-semibold text-black mb-2">{item.q}</p>
+                        <p className="font-heading text-2xl text-neutral-900 mb-3">{item.q}</p>
                         <p className="text-sm text-neutral-600 leading-relaxed">{item.a}</p>
                       </div>
                     ))}

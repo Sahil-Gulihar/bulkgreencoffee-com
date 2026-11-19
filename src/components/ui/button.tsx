@@ -5,34 +5,34 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center gap-2 select-none justify-center whitespace-nowrap text-sm font-medium transition-[color,box-shadow] focus-visible:outline-none focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive",
+  "btn-sweep inline-flex items-center gap-2 select-none justify-center whitespace-nowrap rounded-none border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-600 aria-invalid:border-destructive disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
   {
     variants: {
       variant: {
         default:
-          "bg-primary orangeshadow text-primary-foreground shadow-xs cursor-pointer rounded-lg",
-        blue: "bg-primary blueshadow text-primary-foreground shadow-xs cursor-pointer rounded-lg",
-        red: "bg-primary redshadow text-primary-foreground shadow-xs cursor-pointer rounded-lg",
+          "bg-teal-800 text-neutral-50 border-teal-800 hover:text-teal-800 [--sweep:#faf7f2]",
+        blue: "bg-teal-800 text-neutral-50 border-teal-800 hover:text-teal-800 [--sweep:#faf7f2]",
+        red: "bg-neutral-900 text-neutral-50 border-neutral-900 hover:text-neutral-900 [--sweep:#faf7f2]",
         black:
-          "bg-black text-white shadow-xs hover:bg-neutral-900 rounded-lg cursor-pointer",
-        gray: "bg-primary grayshadow text-primary-foreground shadow-xs cursor-pointer rounded-lg",
-        teal: "bg-teal-600 hover:bg-teal-700 text-white shadow-xs cursor-pointer rounded-lg",
+          "bg-neutral-900 text-neutral-50 border-neutral-900 hover:text-neutral-900 [--sweep:#faf7f2]",
+        gray: "bg-neutral-700 text-neutral-50 border-neutral-700 hover:text-neutral-700 [--sweep:#faf7f2]",
+        teal: "bg-teal-800 text-neutral-50 border-teal-800 hover:text-teal-800 [--sweep:#faf7f2]",
         lightgray:
-          "bg-primary lightgrayshadow text-primary-foreground shadow-xs cursor-pointer rounded-lg",
+          "bg-neutral-200 text-neutral-900 border-neutral-200 hover:text-neutral-50 [--sweep:#22301b]",
         lightgraybg:
-          "bg-neutral-100 hover:bg-white active:bg-neutral-200 duration-300 border border-neutral-300 hover:border-neutral-400/60 text-neutral-950 shadow-xs cursor-pointer rounded-lg",
+          "bg-transparent text-neutral-900 border-neutral-900/70 hover:text-neutral-50 hover:border-teal-800 [--sweep:#22301b]",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground cursor-pointer",
-        secondary: " text-black cursor-pointer",
-        ghost: "hover:bg-accent hover:text-accent-foreground cursor-pointer",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-transparent text-neutral-900 border-neutral-900/40 hover:text-neutral-50 hover:border-teal-800 [--sweep:#22301b]",
+        secondary: "text-neutral-900",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-teal-800 underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3 cursor-pointer",
-        minor: "py-1 px-3 text-sm has-[>svg]:px-3 cursor-pointer",
-        sm: "max-sm:text-sm py-1.5 max-xs:px-3 max-w-lg:px-3.5 max-w-lg:py-2 px-3.5 text-md has-[>svg]:px-4 cursor-pointer",
-        lg: "max-sm:text-sm py-2.5 max-xs:px-3 max-xs:py-2 max-sm:px-6 px-6 text-lg has-[>svg]:px-4",
-        icon: "size-9",
+        default: "h-11 px-6 py-2 has-[>svg]:px-5",
+        minor: "py-2 px-4 has-[>svg]:px-3",
+        sm: "h-10 px-5 py-2 has-[>svg]:px-4",
+        lg: "h-12 px-8 py-3 has-[>svg]:px-6",
+        icon: "size-10",
       },
     },
     defaultVariants: {

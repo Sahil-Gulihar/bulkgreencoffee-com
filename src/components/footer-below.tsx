@@ -30,16 +30,24 @@ export default function FooterBelow() {
   ];
 
   return (
-    <footer className="bg-teal-600">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 pb-8">
+    <footer className="bg-teal-900 text-neutral-100 overflow-hidden">
+      <div className="max-w-[1480px] mx-auto px-4 lg:px-8 pb-8">
+
+        {/* Giant wordmark */}
+        <p
+          aria-hidden
+          className="font-heading select-none whitespace-nowrap pt-10 text-center font-light leading-[0.9] tracking-[-0.03em] text-white/[0.07] text-[15vw] lg:text-[11rem]"
+        >
+          Bulk Green Coffee
+        </p>
 
         {/* Policy links */}
-        <div className="pt-6 flex flex-wrap gap-x-6 gap-y-2">
+        <div className="pt-8 flex flex-wrap gap-x-8 gap-y-2">
           {policyLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-white/80 hover:text-white hover:underline transition-colors"
+              className="eyebrow link-draw text-white/75 hover:text-white transition-colors"
             >
               {link.label}
             </Link>
@@ -47,7 +55,7 @@ export default function FooterBelow() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-md text-white font-medium border-t border-white/20 mt-4">
+        <div className="pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-white/80 border-t border-white/15 mt-6">
           <p>
             © {new Date().getFullYear()} Gray Cup Enterprises Pvt. Ltd. All
             rights reserved.
@@ -64,7 +72,7 @@ export default function FooterBelow() {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className="hover:underline transition-colors"
+                className="link-draw hover:text-white transition-colors"
               >
                 {link.label}
               </Link>

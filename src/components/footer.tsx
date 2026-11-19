@@ -29,53 +29,53 @@ export default function Footer() {
     { href: "/bulk-roasted-coffee-cafes/bengaluru", label: "Café Bulk Coffee Bengaluru" },
   ];
 
-  const resourceLinks = [
-    { href: "https://graycup.org", label: "Company Site" },
-    { href: "https://bulkgreencoffee.com/", label: "B2B Store" },
-    { href: "https://graycup.in/", label: "Consumer Store" },
-    { href: "https://status.graycup.org/", label: "Status" },
-    { href: "/sitemap.xml", label: "Sitemap" },
-  ];
-
   return (
-    <footer className="bg-yellow-300">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-8">
-        {/* Top links */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            {mainLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-black hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+    <footer className="bg-sand text-neutral-900 border-t border-neutral-200 mt-24">
+      <div className="max-w-[1480px] mx-auto px-4 lg:px-8 pt-16 pb-10">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
+          <div>
+            <p className="eyebrow text-neutral-500 mb-4">Bulk Green Coffee</p>
+            <p className="font-heading text-3xl md:text-4xl font-light leading-[1.1] max-w-sm">
+              Indian green coffee, <em>sourced at origin.</em>
+            </p>
+          </div>
 
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            {socialLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-black hover:underline transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div>
+            <p className="eyebrow text-neutral-500 mb-5">Explore</p>
+            <nav className="flex flex-col gap-2.5 text-[0.95rem]">
+              {mainLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="link-draw w-fit">
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <p className="eyebrow text-neutral-500 mb-5">Follow</p>
+            <nav className="flex flex-col gap-2.5 text-[0.95rem]">
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-draw w-fit"
+                >
+                  {link.label} ↗
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
 
-        <nav className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-black/80">
+        <nav className="mt-14 pt-6 border-t border-neutral-300/70 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-600">
           {roastedLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:underline">
+            <Link key={link.href} href={link.href} className="link-draw">
               {link.label}
             </Link>
           ))}
-          <Link href="/sitemap.xml" className="hover:underline">
+          <Link href="/sitemap.xml" className="link-draw">
             More cities →
           </Link>
         </nav>
