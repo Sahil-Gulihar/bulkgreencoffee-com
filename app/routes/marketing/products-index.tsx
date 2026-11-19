@@ -84,7 +84,7 @@ function RegionSection({
                 key={v}
                 disabled={disabled}
                 onClick={() => setFilter(v)}
-                className={`px-3 py-1.5 text-[0.7rem] uppercase tracking-[0.16em] font-medium transition-colors
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors
                   ${
                     filter === v
                       ? "bg-teal-800 text-white"
@@ -101,7 +101,7 @@ function RegionSection({
       </div>
 
       {filtered.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((product) => (
             <ProductCard key={product.slug} product={product} />
           ))}

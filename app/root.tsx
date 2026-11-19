@@ -9,12 +9,6 @@ import type { ReactNode } from "react";
 import NotFound from "./routes/not-found";
 
 export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Jost:ital,wght@0,300..600;1,300..600&display=swap",
-  },
   { rel: "icon", href: "/favicon.ico" },
   { rel: "icon", href: "/icon-light.svg", media: "(prefers-color-scheme: light)" },
   { rel: "icon", href: "/icon-dark.svg", media: "(prefers-color-scheme: dark)" },
@@ -28,7 +22,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Wholesale Indian green coffee for roasters, blenders, and importers. Specialty lots (Natural, Honey, Washed) and commercial AA/AAA grade from Koraput (Odisha) and Halflong (Assam). Peaberry available. Export-ready with full traceability.",
+        "Wholesale Indian green coffee for roasters, blenders, and importers. Specialty lots (Natural, Honey, Washed) and commercial AA/AAA grade from Koraput (Odisha) and Halflong (Assam). Peaberry available. Full traceability.",
     },
     { property: "og:title", content: "Bulk Green Coffee | Indian Specialty & Commercial Green Coffee" },
     {
@@ -44,7 +38,7 @@ export const meta: MetaFunction = () => {
     {
       name: "twitter:description",
       content:
-        "Specialty and commercial-grade Indian green coffee. AA/AAA from ₹800/kg. Peaberry available. Koraput, Assam, and South India origins. Export-ready.",
+        "Specialty and commercial-grade Indian green coffee. AA/AAA from ₹800/kg. Peaberry available. Koraput, Assam, and South India origins.",
     },
     { name: "twitter:image", content: "https://bulkgreencoffee.com/og.png" },
   ];

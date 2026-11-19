@@ -5,6 +5,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 
 export default defineConfig({
+  server: {
+    // allow opening the dev server through ngrok tunnels (any *.ngrok-free.app / *.ngrok.app host)
+    allowedHosts: [".ngrok-free.app", ".ngrok.app", ".ngrok.io"],
+  },
   plugins: [
     tailwindcss(),
     reactRouter(),

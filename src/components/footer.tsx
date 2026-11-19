@@ -30,18 +30,16 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-sand text-neutral-900 border-t border-neutral-200 mt-24">
-      <div className="max-w-[1480px] mx-auto px-4 lg:px-8 pt-16 pb-10">
+    <footer className="bg-neutral-100 text-neutral-900 border-t border-neutral-200 mt-16">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-10">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <p className="eyebrow text-neutral-500 mb-4">Bulk Green Coffee</p>
-            <p className="font-heading text-3xl md:text-4xl font-light leading-[1.1] max-w-sm">
-              Indian green coffee, <em>sourced at origin.</em>
-            </p>
+            <p className="text-lg font-semibold text-teal-800">Bulk Green Coffee</p>
+            <p className="mt-2 max-w-sm text-sm text-neutral-600">Indian green coffee, sourced at origin.</p>
           </div>
 
           <div>
-            <p className="eyebrow text-neutral-500 mb-5">Explore</p>
+            <p className="eyebrow text-neutral-500 mb-4">Explore</p>
             <nav className="flex flex-col gap-2.5 text-[0.95rem]">
               {mainLinks.map((link) => (
                 <Link key={link.href} href={link.href} className="link-draw w-fit">
@@ -52,7 +50,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="eyebrow text-neutral-500 mb-5">Follow</p>
+            <p className="eyebrow text-neutral-500 mb-4">Follow</p>
             <nav className="flex flex-col gap-2.5 text-[0.95rem]">
               {socialLinks.map((link) => (
                 <Link
@@ -69,7 +67,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <nav className="mt-14 pt-6 border-t border-neutral-300/70 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-600">
+        <nav className="mt-10 pt-6 border-t border-neutral-300/70 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-600">
           {roastedLinks.map((link) => (
             <Link key={link.href} href={link.href} className="link-draw">
               {link.label}
