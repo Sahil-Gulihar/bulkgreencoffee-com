@@ -36,6 +36,14 @@ export function Navbar() {
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
+            <a
+              href="https://graycup.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden whitespace-nowrap rounded-md bg-teal-800 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 lg:inline-block"
+            >
+              Visit Gray Cup Store
+            </a>
             <CurrencySelector />
             <Link
               href="/cart"
@@ -49,14 +57,6 @@ export function Navbar() {
                 </span>
               )}
             </Link>
-            <a
-              href="https://graycup.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden whitespace-nowrap rounded-md bg-teal-800 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 lg:inline-block"
-            >
-              Gray Cup Store
-            </a>
             <button
               className="rounded-md p-2 hover:bg-neutral-200 lg:hidden"
               onClick={() => setMenuOpen(true)}
@@ -99,7 +99,7 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="rounded-md bg-teal-800 px-4 py-2.5 text-center text-sm font-medium text-white"
               >
-                Gray Cup Store
+                Visit Gray Cup Store
               </a>
               <Link
                 href="https://graycup.org/"
