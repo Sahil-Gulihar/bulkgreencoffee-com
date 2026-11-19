@@ -9,8 +9,6 @@ import { useCart } from "@/context/cart-context";
 const NAV_LINKS: [string, string][] = [
   ["Products", "/products"],
   ["Buy Green Coffee Beans", "/buy-green-coffee-beans"],
-  ["Product Request", "/new-product-request"],
-  ["White Label", "/white-label"],
 ];
 
 export function Navbar() {
