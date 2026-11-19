@@ -11,11 +11,9 @@ export default [
     route("privacy", "routes/marketing/privacy.tsx"),
     route("refunds", "routes/marketing/refunds.tsx"),
     route("terms", "routes/marketing/terms.tsx"),
-    route("white-label", "routes/marketing/white-label.tsx"),
     route("social-responsibility", "routes/marketing/social-responsibility.tsx"),
     route("team", "routes/marketing/team.tsx"),
     route("sites", "routes/marketing/sites.tsx"),
-    route("new-product-request", "routes/marketing/new-product-request.tsx"),
     route("sample-request", "routes/marketing/sample-request.tsx"),
 
     // Products
@@ -68,7 +66,6 @@ export default [
   route("api/roasted-create-payment", "routes/api/roasted-create-payment.ts"),
   route("api/exchange-rates", "routes/api/exchange-rates.ts"),
   route("api/geo", "routes/api/geo.ts"),
-  route("api/new-product-request", "routes/api/new-product-request.ts"),
   route("api/quote-request", "routes/api/quote-request.ts"),
   route("api/verify-payment", "routes/api/verify-payment.ts"),
   route("api/webhooks/cashfree", "routes/api/webhooks-cashfree.ts"),

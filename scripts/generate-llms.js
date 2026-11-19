@@ -26,11 +26,6 @@ const pages = [
     description: "Contact information including schedule a meeting, phone numbers, sales inquiries at office@graycup.org, and general enquiries at arjun@graycup.in."
   },
   {
-    title: "Bulk Green Coffee - White Label",
-    url: `${SITE_URL}/white-label`,
-    description: "White label solutions for businesses looking to brand our coffee products."
-  },
-  {
     title: "Bulk Green Coffee - Sample Request",
     url: `${SITE_URL}/sample-request`,
     description: "Request coffee samples for evaluation before placing bulk orders."
@@ -64,11 +59,6 @@ const pages = [
     title: "Privacy Policy",
     url: `${SITE_URL}/privacy`,
     description: "Privacy policy and data handling practices."
-  },
-  {
-    title: "New Product Request",
-    url: `${SITE_URL}/new-product-request`,
-    description: "Request products not currently in our catalog."
   }
 ];
 
