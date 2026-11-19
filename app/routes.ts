@@ -60,7 +60,6 @@ export default [
 
   // Resource / API Routes
   route("api/bgc-quote", "routes/api/bgc-quote.ts"),
-  route("api/call-request", "routes/api/call-request.ts"),
   route("api/contact", "routes/api/contact.ts"),
   route("api/create-payment", "routes/api/create-payment.ts"),
   route("api/roasted-create-payment", "routes/api/roasted-create-payment.ts"),

@@ -23,7 +23,7 @@ const pages = [
   {
     title: "Contact Bulk Green Coffee",
     url: `${SITE_URL}/contact`,
-    description: "Contact information including schedule a meeting, phone numbers, sales inquiries at office@graycup.org, and general enquiries at arjun@graycup.in."
+    description: "Contact information including sales inquiries at office@graycup.org, and general enquiries at arjun@graycup.in."
   },
   {
     title: "Bulk Green Coffee - Sample Request",

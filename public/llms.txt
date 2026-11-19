@@ -2,7 +2,7 @@
 
 # llms-full v1
 # site: https://bulkgreencoffee.com
-# generated: 2026-11-19T18:27:34.116Z
+# generated: 2026-11-19T18:31:03.640Z
 # generator: custom script
 # pages: 22
 
@@ -43,7 +43,7 @@ description: Browse our catalog of green coffee products from East India (Korapu
 ### BEGIN PAGE
 title: Contact Bulk Green Coffee
 url: https://bulkgreencoffee.com/contact
-description: Contact information including schedule a meeting, phone numbers, sales inquiries at office@graycup.org, and general enquiries at arjun@graycup.in.
+description: Contact information including sales inquiries at office@graycup.org, and general enquiries at arjun@graycup.in.
 ### END PAGE
 
 ### BEGIN PAGE
